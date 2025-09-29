@@ -1,0 +1,132 @@
+body {
+  background: #f8f9fa;
+  color: #212529;
+}
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+#ngoList, #helpList, #supplyList {
+  padding: 10px;
+}
+
+.page-header {
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding-bottom: .5rem;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.list-card {
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  padding: 12px 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.list-card .title {
+  font-weight: 600;
+  color: #0d1b2a;
+}
+
+.badge-priority {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: .8rem;
+}
+.badge-low { background: rgba(34,197,94,.18); color: #34d399; }
+.badge-normal { background: rgba(59,130,246,.18); color: #60a5fa; }
+.badge-urgent { background: rgba(239,68,68,.18); color: #f87171; }
+
+.status-available { color: #34d399; }
+.status-pending { color: #fbbf24; }
+
+.empty-state {
+  text-align: center;
+  padding: 18px;
+  color: #6c757d;
+  background: #ffffff;
+  border: 1px dashed #dee2e6;
+  border-radius: 10px;
+}
+
+.map-card {
+  height: 420px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+#toastContainer {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 2000;
+}
+
+.toast-item {
+  background: #111827;
+  color: #f9fafb;
+  border-radius: 10px;
+  padding: 10px 14px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.18), 0 2px 8px rgba(0,0,0,.12);
+}
+
+/* Form controls - dark theme */
+.form-control, .form-select {
+  background-color: #ffffff;
+  color: #212529;
+  border: 1px solid #ced4da;
+}
+.form-control::placeholder, .form-select option {
+  color: #6c757d;
+}
+.form-control:focus, .form-select:focus {
+  background-color: #ffffff;
+  color: #212529;
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
+}
+
+/* Buttons - keep contrast and add subtle transitions */
+.btn-primary { background-color: #0d6efd; border-color: #0d6efd; }
+.btn-primary:hover { background-color: #0b5ed7; border-color: #0b5ed7; }
+.btn-success { background-color: #198754; border-color: #198754; }
+.btn-success:hover { background-color: #157347; border-color: #157347; }
+.btn-warning { background-color: #ffc107; border-color: #ffc107; color: #212529; }
+.btn-warning:hover { background-color: #ffca2c; border-color: #ffca2c; color: #212529; }
+.btn-outline-secondary { color: #6c757d; border-color: #6c757d; }
+.btn-outline-secondary:hover { background: #f8f9fa; border-color: #6c757d; }
+
+/* Section headers subtle border tint for black bg */
+.page-header { border-bottom: 1px solid rgba(0,0,0,0.06); }
+.section-head { color: #212529; }
+.section-head .text-secondary { color: #6c757d !important; }
+
+/* Leaflet popup dark theme */
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: #ffffff;
+  color: #212529;
+  box-shadow: 0 6px 24px rgba(0,0,0,.15);
+}
+.leaflet-container a { color: #0d6efd; }
+
+

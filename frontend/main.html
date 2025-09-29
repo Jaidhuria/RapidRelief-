@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Relief Allocators | India</title>
+    <meta name="description" content="Real-time disaster relief coordination platform for India">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <img width="50" height="auto" src="/assets/logo.jpg" alt="Logo">
+            <span>Rapid Relief</span>
+        </a>
+        <div class="nav-links">
+            <a href="ngo.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="#map"><i class="fas fa-map-marked-alt"></i> Disaster Map</a>
+            <a href="#reports"><i class="fas fa-chart-bar"></i> Reports</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            <div class="profile-dropdown">
+                <button class="profile-btn">
+                    <img src="data:image/png;base64,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"
+                        alt="Profile" class="profile-img">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item"><i class="fas fa-user"></i> My Profile</a>
+                    <a href="login.html" class="dropdown-item"><i class="fas fa-question-circle"></i>login</a>
+                    <a href="#" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" class="dropdown-item"><i class="fas fa-bell"></i> Notifications</a>
+
+                    <div class="dropdown-divider"></div>
+                    <a href="login.html" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Location Detection Banner -->
+    <div class="location-banner" id="locationBanner" style="display: none;">
+        <i class="fas fa-map-marker-alt"></i>
+        <div>
+            <p>Your detected location: <strong id="detectedLocation"><span
+                        class="location-loading"></span>Detecting...</strong></p>
+            <p class="location-accuracy">Accuracy: <span id="locationAccuracy">Calculating...</span></p>
+        </div>
+        <button class="close-banner" id="closeBanner">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Disaster Relief Coordination Platform</h1>
+                <p>Real-time monitoring and resource allocation for disaster-affected regions across India</p>
+                <div class="cta-buttons">
+                    <a href="ngo.html" class="btn btn-primary">
+                        <i class="fas fa-tachometer-alt"></i> View Live Dashboard
+                    </a>
+                    <a href="emergency.html" class="btn btn-accent">
+                        <i class="fas fa-exclamation-triangle"></i> Report Emergency
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="card-image">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portal Grid -->
+        <section id="dashboard">
+            <div class="section-header">
+                <h2>Relief Coordination Portals</h2>
+                <p>Access specialized interfaces for different relief functions and services</p>
+            </div>
+
+            <div class="portal-grid">
+                <!-- Public Portal -->
+                <div class="portal-card">
+                    <div class="card-image">
+                        <i class="fas fa-users"></i>
+                        <img src="/assets/divlogo.jpg" alt="Nono's Register">
+                    </div>
+                    <h3>3mlspats (Public Portal)</h3>
+                    <p>Public access portal for disaster information and resource requests with real-time updates.</p>
+                    <ul>
+                        <li>Affected areas mapping using AI BOT</li>
+                        <li>Real-time resource tracking</li>
+                        <li>Community support features</li>
+                    </ul>
+                    <a href="public.html" class="btn btn-primary">
+                        <i class="fas fa-external-link-alt"></i> Access Public Portal
+                    </a>
+                </div>
+
+                <!-- Nono's Register -->
+                <div class="portal-card">
+                    <!-- Image Section -->
+                    <div class="card-image">
+                        <img src="/assets/divlogo3.jpg" alt="Nono's Register"
+                            style="width:100%; height:auto; border-radius:8px;">
+                    </div>
+
+                    <h3>Nono's Register</h3>
+                    <p>Comprehensive user management system with adaptation measures.</p>
+                    <ul>
+                        <li>User profiles and authentication</li>
+                        <li>Adaptation measures database</li>
+                        <li>Personalized recommendations</li>
+                    </ul>
+                    <a href="register.html" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i> Register Now
+                    </a>
+                </div>
+
+
+                <!-- Emergency System -->
+                <div class="portal-card">
+                    <!-- Image Section -->
+                    <div class="card-image">
+                        <img src="/assets/divlogo2.jpg" alt="Emergency System"
+                            style="width:100%; height:auto; border-radius:8px;">
+                    </div>
+
+                    <h3>Emergency System</h3>
+                    <p>Critical response coordination center with priority allocation.</p>
+                    <ul>
+                        <li>Dashboard information</li>
+                        <li>Emergency profiles</li>
+                        <li>Priority allocation system</li>
+                    </ul>
+
+                    <!-- Button Section -->
+                    <a href="emergency.html" class="btn btn-accent">
+                        <i class="fas fa-exclamation-triangle"></i> Go to Emergency Portal
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Interactive Map Section -->
+        <section id="map" class="map-section">
+            <div class="section-header">
+                <h2>India Disaster Map</h2>
+                <p>Real-time visualization of active disasters and relief efforts across India</p>
+            </div>
+
+            <div class="map-container">
+                <div id="disasterMap"></div>
+                <div class="map-overlay">
+                    <h4>Disaster Legend</h4>
+                    <div class="map-legend">
+                        <div class="legend-item"><span class="legend-color" style="background: #ff6b6b;"></span>Flood
+                        </div>
+                        <div class="legend-item"><span class="legend-color"
+                                style="background: #feca57;"></span>Earthquake</div>
+                        <div class="legend-item"><span class="legend-color" style="background: #ff9ff3;"></span>Cyclone
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Emergency Button -->
+        <button id="emergencyButton">
+            <div id="emergencyIcon">🆘</div>
+            <div>EMERGENCY</div>
+        </button>
+
+        <!-- Confirmation Modal -->
+        <div id="emergencyModal" class="emergency-modal">
+            <div class="emergency-modal-content">
+                <h2>Emergency Assistance</h2>
+                <p>Are you sure you want to call emergency services?</p>
+                <p id="locationStatus">Attempting to get your location...</p>
+                <div id="locationWarning" class="location-warning" style="display:none"></div>
+                <button id="refreshLocation" class="refresh-location" type="button" style="display:none">Refresh
+                    Location</button>
+                <div class="emergency-actions">
+                    <button id="confirmEmergency" class="confirm-emergency">CALL NOW</button>
+                    <button id="cancelEmergency" class="cancel-emergency">CANCEL</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Charts Section -->
+        <section id="reports" class="charts-section">
+            <div class="section-header">
+                <h2>Disaster Analytics</h2>
+                <p>Data-driven insights for better decision making and resource allocation</p>
+            </div>
+
+            <div class="chart-grid">
+                <div class="chart-card">
+                    <h4>Disaster Frequency in India (2023-2024)</h4>
+                    <div class="chart-container">
+                        <canvas id="disasterFrequencyChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h4>Resource Allocation by State</h4>
+                    <div class="chart-container">
+                        <canvas id="resourceAllocationChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h4>Response Time Analysis</h4>
+                    <div class="chart-container">
+                        <canvas id="responseTimeChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h4>Affected Population Trends</h4>
+                    <div class="chart-container">
+                        <canvas id="populationTrendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Disaster Relief Allocators</h4>
+                <p>A centralized platform for coordinating disaster relief efforts across India with real-time
+                    monitoring and resource allocation.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="ngo.html"><i class="fas fa-chevron-right"></i> Dashboard</a></li>
+                    <li><a href="#map"><i class="fas fa-chevron-right"></i> Disaster Map</a></li>
+                    <li><a href="#resources"><i class="fas fa-chevron-right"></i> Resources</a></li>
+                    <li><a href="#reports"><i class="fas fa-chevron-right"></i> Reports</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Emergency Contacts</h4>
+                <ul class="footer-links">
+                    <li><i class="fas fa-phone-alt"></i> National Disaster Helpline: 1078</li>
+                    <li><i class="fas fa-phone-alt"></i> NDMA: +91-11-26701700</li>
+                    <li><i class="fas fa-phone-alt"></i> Police: 100</li>
+                    <li><i class="fas fa-ambulance"></i> Ambulance: 102</li>
+                    <li><i class="fas fa-fire-extinguisher"></i> Fire: 101</li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> Email: info@disasterrelief.in</li>
+                    <li><i class="fas fa-phone-alt"></i> Phone: +91 1800 123 4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> HQ: New Delhi, India</li>
+                    <li><i class="fas fa-clock"></i> Open: 24/7 Emergency</li>
+                </ul>
+                <div class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Your email address">
+                    <button class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i> Subscribe
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Disaster Relief Allocators. All rights reserved. | Data last updated: <span
+                    id="lastUpdated">Loading...</span></p>
+        </div>
+    </footer>
+
+
+    <div id="chat-btn">💬</div>
+    <div id="chat-box">
+        <div id="messages"></div>
+        <div id="input-box">
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var emergencyBtn = document.getElementById('emergencyPortalBtn');
+            if (emergencyBtn) {
+                emergencyBtn.addEventListener('click', function () {
+                    window.location.href = 'emergency.html';
+                });
+            }
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
