@@ -124,7 +124,7 @@ Follow these steps to get RAPID-RELIEF running locally.
 ---
 
 ```bash
-git clone https://github.com/your-username/rapid-relief.git
+git clone https://github.com/JaiDhuria/rapid-relief.git
 cd rapid-relief
 
  Backend Setup
